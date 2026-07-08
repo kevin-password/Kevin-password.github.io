@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Tumusiime | MBChB Student & Medical Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #818cf8;
+            --accent-hover: #6366f1;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: var(--accent-hover); }
+        section { max-width: 900px; margin: 0 auto; padding: 80px 20px; }
+        h2 { font-size: 2rem; font-weight: 700; margin-bottom: 40px; position: relative; display: inline-block; }
+        h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 0;
+            width: 50px; height: 4px; background: var(--accent); border-radius: 2px;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
+        }
+        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
+        nav a { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { color: var(--text-primary); }
+
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.15) 0%, transparent 50%);
+            padding: 20px;
+        }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; background: linear-gradient(135deg, #fff 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero .subtitle { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 15px; font-weight: 300; }
+        .hero .location { color: var(--accent); margin-bottom: 30px; font-size: 1rem; }
+        .hero .contact-links { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .hero .contact-links a {
+            padding: 12px 24px; border: 1px solid var(--border); border-radius: 50px;
+            color: var(--text-primary); font-size: 0.9rem; transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero .contact-links a:hover { background: var(--accent); border-color: var(--accent); color: white; transform: translateY(-2px); }
+
+        .timeline { position: relative; padding-left: 30px; border-left: 2px solid var(--border); }
+        .timeline-item { margin-bottom: 40px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -37px; top: 5px;
+            width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg-primary);
+        }
+        .timeline-item h3 { font-size: 1.25rem; margin-bottom: 5px; color: var(--text-primary); }
+        .timeline-item .institution { color: var(--accent); font-size: 0.95rem; font-weight: 500; margin-bottom: 5px; }
+        .timeline-item .date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 10px; font-style: italic; }
+        .timeline-item p, .timeline-item li { color: var(--text-secondary); font-size: 0.95rem; }
+        .timeline-item ul { padding-left: 20px; margin-top: 10px; }
+        .timeline-item li { margin-bottom: 8px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card {
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            border-radius: 12px; padding: 30px; transition: all 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-color: var(--accent); }
+        .card h3 { margin-bottom: 15px; font-size: 1.2rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; }
+        
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .skill-category h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag {
+            background: rgba(129, 140, 248, 0.15); color: var(--accent);
+            padding: 8px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 500;
+            border: 1px solid rgba(129, 140, 248, 0.3); transition: all 0.3s ease;
+        }
+        .skill-tag:hover { background: var(--accent); color: white; transform: scale(1.05); }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .highlight-box h3 { color: var(--accent); margin-bottom: 10px; }
+
+        footer { text-align: center; padding: 40px 20px; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 40px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            nav ul { gap: 15px; font-size: 0.85rem; }
+            section { padding: 60px 20px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>KEVIN TUMUSIIME</h1>
+        <p class="subtitle">MBChB Student | Medical Researcher | Student Leader</p>
+        <p class="location">📍 Kabale, Uganda</p>
+        <div class="contact-links">
+            <a href="mailto:tumusiimekevin3@gmail.com">✉️ Email</a>
+            <a href="tel:+256785365538">📞 +256 785 365 538</a>
+            <a href="https://linkedin.com/in/kevin-tumusiime" target="_blank">💼 LinkedIn</a>
+            <a href="https://github.com/kevin-tumusiime" target="_blank">💻 GitHub</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>Professional Profile</h2>
+            <div class="highlight-box">
+                <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8;">
+                    Dedicated Bachelor of Medicine and Bachelor of Surgery (MBChB) student at Kabale University with experience in medical research, student leadership, healthcare innovation, and community health engagement. Demonstrated ability to contribute to research initiatives, coordinate multidisciplinary teams, organize educational and mentorship programs, and promote community health through evidence-based interventions. Strong interests in clinical medicine, surgery, public health, medical education, digital health, and healthcare innovation.
+                </p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Bachelor of Medicine and Bachelor of Surgery (MBChB)</h3>
+                    <div class="institution">Kabale University, Uganda</div>
+                    <div class="date">August 2024 – Present</div>
+                </div>
+                <div class="timeline-item">
+                    <h3>Uganda Advanced Certificate of Education (UACE)</h3>
+                    <div class="institution">Standard College Ntungamo</div>
+                    <div class="date">2022 – 2023</div>
+                </div>
+                <div class="timeline-item">
+                    <h3>Uganda Certificate of Education (UCE)</h3>
+                    <div class="institution">Kitabi Seminary</div>
+                    <div class="date">2017 – 2020</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fellowships">
+            <h2>Fellowships & Awards</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Millennium Fellow, Class of 2025</h3>
+                    <div class="institution">Millennium Fellowship (UNAI & MCN)</div>
+                    <div class="date">August 2025 – December 2025</div>
+                    <ul>
+                        <li>Selected into the Millennium Fellowship, a global leadership development program convened by the United Nations Academic Impact (UNAI) and Millennium Campus Network (MCN)</li>
+                        <li>Led the Child Education Improvement Initiative focused on improving educational opportunities for disadvantaged children in rural communities</li>
+                        <li>Organized mentorship programs, literacy initiatives, educational competitions, and community engagement activities</li>
+                        <li>Advanced Sustainable Development Goal 4 (Quality Education) through student-led action and community service</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Research Assistant</h3>
+                    <div class="institution">Faculty of Medicine, Kabale University</div>
+                    <div class="date">January 2025 – Present</div>
+                    <ul>
+                        <li>Conduct literature reviews and evidence synthesis to support research activities</li>
+                        <li>Participate in proposal development, protocol writing, and study planning</li>
+                        <li>Assist in questionnaire design, participant engagement, and data collection</li>
+                        <li>Support data management, analysis, and preparation of technical reports</li>
+                        <li>Ensure adherence to ethical and institutional research standards</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>Community Health Research Project</h3>
+                    <div class="institution">Kabale University</div>
+                    <div class="date">September 2025 – February 2026</div>
+                    <ul>
+                        <li>Assisted in participant recruitment and data collection activities</li>
+                        <li>Conducted literature reviews and critical appraisal of scientific evidence</li>
+                        <li>Supported report preparation and dissemination of research findings</li>
+                        <li>Collaborated with multidisciplinary teams throughout the project lifecycle</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership">
+            <h2>Leadership Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Vice Chairperson (Vice President)</h3>
+                    <div class="institution">Kabale University Surgical Society (KUSS)</div>
+                    <div class="date">August 2025 – Present</div>
+                    <ul>
+                        <li>Coordinate society committees and support implementation of academic, mentorship, and professional development activities</li>
+                        <li>Assist in strategic planning, member engagement, and organizational governance</li>
+                        <li>Foster collaboration with healthcare professionals, academic institutions, and partner organizations</li>
+                        <li>Promote student participation in research, surgery, and leadership initiatives</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>Chairperson for Mentorship and Advocacy</h3>
+                    <div class="institution">Kabale University Surgical Society (KUSS)</div>
+                    <div class="date">August 2024 – July 2025</div>
+                    <ul>
+                        <li>Led mentorship and advocacy initiatives aimed at supporting medical students' academic and professional development</li>
+                        <li>Organized webinars, networking opportunities, and career guidance activities</li>
+                        <li>Established partnerships with healthcare stakeholders and student organizations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="community">
+            <h2>Community Service</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Community Health Volunteer</h3>
+                    <div class="institution">Chaperone International - Katate Health Centre IV, Kanungu District</div>
+                    <div class="date">January 2025 – February 2025</div>
+                    <ul>
+                        <li>Supported community outreach activities focused on health education, disease prevention, and health promotion</li>
+                        <li>Participated in awareness campaigns addressing HIV/AIDS, malaria, hypertension, diabetes, and other public health priorities</li>
+                        <li>Assisted healthcare teams during medical outreaches, surgical camps, and school health programs</li>
+                        <li>Promoted preventive healthcare practices within underserved communities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming & Development</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python (Basic)</span>
+                        <span class="skill-tag">R Programming (Basic)</span>
+                        <span class="skill-tag">LaTeX & Overleaf</span>
+                        <span class="skill-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Research & Analysis</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Research Methodology</span>
+                        <span class="skill-tag">Scientific Literature Search</span>
+                        <span class="skill-tag">Academic Writing</span>
+                        <span class="skill-tag">Data Entry & Documentation</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Software & Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Microsoft Office Suite</span>
+                        <span class="skill-tag">LibreOffice</span>
+                        <span class="skill-tag">Ubuntu Linux</span>
+                        <span class="skill-tag">Windows OS</span>
+                        <span class="skill-tag">Digital Collaboration Platforms</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Kabale University Surgical Society Web Application</h3>
+                    <p><strong>Role:</strong> Lead Developer & Host (2025)</p>
+                    <p style="margin-top: 15px;">Designed, developed, and deployed a comprehensive web application for the Kabale University Surgical Society to enhance member engagement, streamline communication, and provide educational resources for medical students interested in surgery.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Healthcare Education</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Child Education Improvement Initiative</h3>
+                    <p><strong>Role:</strong> Project Lead - Millennium Fellowship (2025)</p>
+                    <p style="margin-top: 15px;">Led a community-based initiative focused on improving educational opportunities for disadvantaged children in rural communities through mentorship programs, literacy initiatives, and educational competitions.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="skill-tag">SDG 4</span>
+                        <span class="skill-tag">Community Development</span>
+                        <span class="skill-tag">Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="languages">
+            <h2>Languages</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="card" style="text-align: center;">
+                    <h3>English</h3>
+                    <p style="color: var(--accent); font-weight: 600;">Professional Working Proficiency</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3>Runyankore-Rukiga</h3>
+                    <p style="color: var(--accent); font-weight: 600;">Native Proficiency</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3>French</h3>
+                    <p style="color: var(--accent); font-weight: 600;">Elementary Proficiency</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3>Italian</h3>
+                    <p style="color: var(--accent); font-weight: 600;">Elementary Proficiency</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="memberships">
+            <h2>Professional Memberships</h2>
+            <div class="skills-list" style="justify-content: center; flex-wrap: wrap;">
+                <span class="skill-tag" style="padding: 12px 24px; font-size: 1rem;">Member, Kabale University Surgical Society (KUSS)</span>
+                <span class="skill-tag" style="padding: 12px 24px; font-size: 1rem;">Millennium Fellowship Alumni Network</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Kevin Tumusiime. All rights reserved.</p>
+        <p style="margin-top: 10px;">Last updated: June 2025</p>
+    </footer>
+
+</body>
+</html>
