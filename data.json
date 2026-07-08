@@ -1,0 +1,62 @@
+{
+  "name": "KEVIN TUMUSIIME",
+  "title": "MBChB Student | Medical Researcher | Student Leader",
+  "location": "Kabale, Uganda",
+  "email": "tumusiimekevin3@gmail.com",
+  "phone": "+256 785 365 538",
+  "about": "Dedicated Bachelor of Medicine and Bachelor of Surgery (MBChB) student at Kabale University with experience in medical research, student leadership, healthcare innovation, and community health engagement. Demonstrated ability to contribute to research initiatives, coordinate multidisciplinary teams, and promote community health through evidence-based interventions.",
+  "education": [
+    {
+      "degree": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+      "school": "Kabale University, Uganda",
+      "date": "Aug 2024 – Present"
+    },
+    {
+      "degree": "Uganda Advanced Certificate of Education (UACE)",
+      "school": "Standard College Ntungamo",
+      "date": "2022 – 2023"
+    },
+    {
+      "degree": "Uganda Certificate of Education (UCE)",
+      "school": "Kitabi Seminary",
+      "date": "2017 – 2020"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Research Assistant",
+      "company": "Faculty of Medicine, Kabale University",
+      "date": "Jan 2025 – Present",
+      "details": [
+        "Conduct literature reviews and evidence synthesis to support research activities.",
+        "Participate in proposal development, protocol writing, and study planning.",
+        "Assist in questionnaire design, participant engagement, and data collection."
+      ]
+    },
+    {
+      "role": "Vice Chairperson (Vice President)",
+      "company": "Kabale University Surgical Society (KUSS)",
+      "date": "Aug 2025 – Present",
+      "details": [
+        "Coordinate society committees and support implementation of academic and mentorship activities.",
+        "Assist in strategic planning, member engagement, and organizational governance.",
+        "Foster collaboration with healthcare professionals and academic institutions."
+      ]
+    },
+    {
+      "role": "Community Health Volunteer",
+      "company": "Chaperone International - Katate Health Centre IV",
+      "date": "Jan 2025 – Feb 2025",
+      "details": [
+        "Supported community outreach activities focused on health education and disease prevention.",
+        "Participated in awareness campaigns addressing HIV/AIDS, malaria, and hypertension.",
+        "Assisted healthcare teams during medical outreaches and surgical camps."
+      ]
+    }
+  ],
+  "skills": [
+    "Research Methodology", "Scientific Literature Search", "Academic Writing",
+    "Basic Python", "Basic R Programming", "LaTeX & Overleaf", 
+    "Microsoft Office Suite", "Ubuntu Linux", "Digital Collaboration"
+  ]
+}
