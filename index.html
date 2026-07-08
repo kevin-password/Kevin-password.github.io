@@ -4,90 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kevin Tumusiime | Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg-primary: #0f172a; --bg-secondary: #1e293b; --text-primary: #f8fafc; --text-secondary: #94a3b8; --accent: #818cf8; --border: rgba(255, 255, 255, 0.1); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }
-        a { color: var(--accent); text-decoration: none; }
-        section { max-width: 900px; margin: 0 auto; padding: 80px 20px; }
-        h2 { font-size: 2rem; font-weight: 700; margin-bottom: 40px; position: relative; display: inline-block; }
-        h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--accent); border-radius: 2px; }
-        
-        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 15px 0; }
-        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
-        nav a { color: var(--text-secondary); font-weight: 500; }
-        
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.15) 0%, transparent 50%); }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero .subtitle { font-size: 1.3rem; color: var(--text-secondary); margin: 10px 0; }
-        .hero .location { color: var(--accent); margin-bottom: 30px; }
-        .contact-links { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .contact-links a { padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; color: var(--text-primary); transition: all 0.3s ease; }
-        .contact-links a:hover { background: var(--accent); border-color: var(--accent); }
-
-        .timeline { position: relative; padding-left: 30px; border-left: 2px solid var(--border); }
-        .timeline-item { margin-bottom: 40px; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
-        .timeline-item h3 { font-size: 1.25rem; margin-bottom: 5px; }
-        .timeline-item .institution { color: var(--accent); font-weight: 500; }
-        .timeline-item .date { color: var(--text-secondary); font-size: 0.9rem; font-style: italic; margin-bottom: 10px; }
-        .timeline-item ul { padding-left: 20px; color: var(--text-secondary); }
-        .timeline-item li { margin-bottom: 8px; }
-
-        .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
-        .skill-tag { background: rgba(129, 140, 248, 0.15); color: var(--accent); padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; border: 1px solid rgba(129, 140, 248, 0.3); }
-
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } nav ul { gap: 15px; } }
-    </style>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#818cf8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-primary text-slate-50 font-sans leading-relaxed scroll-smooth">
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-primary/80 backdrop-blur-md border-b border-white/10 py-4">
+        <ul class="flex justify-center gap-8 list-none flex-wrap px-5">
+            <li><a href="#about" class="text-slate-400 font-medium hover:text-white transition">About</a></li>
+            <li><a href="#education" class="text-slate-400 font-medium hover:text-white transition">Education</a></li>
+            <li><a href="#experience" class="text-slate-400 font-medium hover:text-white transition">Experience</a></li>
+            <li><a href="#skills" class="text-slate-400 font-medium hover:text-white transition">Skills</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
-        <h1 id="hero-name">Loading...</h1>
-        <p class="subtitle" id="hero-title">Loading...</p>
-        <p class="location" id="hero-location">Loading...</p>
-        <div class="contact-links">
-            <a href="#" id="email-link">✉️ Email</a>
-            <a href="#" id="phone-link">📞 Phone</a>
-            <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
-            <a href="https://github.com" target="_blank">💻 GitHub</a>
+    <!-- HERO SECTION -->
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-5 bg-[radial-gradient(circle_at_50%_50%,rgba(129,140,248,0.15)_0%,transparent_50%)]">
+        <h1 id="hero-name" class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white to-indigo-400 bg-clip-text text-transparent mb-2">Loading...</h1>
+        <p id="hero-title" class="text-xl text-slate-400 mb-2">Loading...</p>
+        <p id="hero-location" class="text-accent mb-8">Loading...</p>
+        <div class="flex gap-4 flex-wrap justify-center">
+            <a href="#" id="email-link" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">✉️ Email</a>
+            <a href="#" id="phone-link" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">📞 Phone</a>
+            <a href="https://linkedin.com" target="_blank" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">💼 LinkedIn</a>
+            <a href="https://github.com" target="_blank" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">💻 GitHub</a>
         </div>
     </header>
 
     <main>
-        <section id="about">
-            <h2>Professional Profile</h2>
-            <p id="about-text" style="font-size: 1.1rem; color: var(--text-secondary);">Loading...</p>
+        <!-- ABOUT -->
+        <section id="about" class="max-w-4xl mx-auto py-20 px-5">
+            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Professional Profile</h2>
+            <p id="about-text" class="text-lg text-slate-400 leading-relaxed">Loading...</p>
         </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="timeline" id="education-container"></div>
+        <!-- EDUCATION -->
+        <section id="education" class="max-w-4xl mx-auto py-20 px-5">
+            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Education</h2>
+            <div id="education-container" class="relative pl-8 border-l-2 border-white/10"></div>
         </section>
 
-        <section id="experience">
-            <h2>Experience & Leadership</h2>
-            <div class="timeline" id="experience-container"></div>
+        <!-- EXPERIENCE -->
+        <section id="experience" class="max-w-4xl mx-auto py-20 px-5">
+            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Experience & Leadership</h2>
+            <div id="experience-container" class="relative pl-8 border-l-2 border-white/10"></div>
         </section>
 
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills-list" id="skills-container"></div>
+        <!-- SKILLS -->
+        <section id="skills" class="max-w-4xl mx-auto py-20 px-5">
+            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Technical Skills</h2>
+            <div id="skills-container" class="flex flex-wrap gap-3"></div>
         </section>
     </main>
 
-    <!-- This links your JS logic to your HTML -->
+    <footer class="text-center py-10 text-slate-500 text-sm border-t border-white/10 mt-10">
+        <p>&copy; 2025 Kevin Tumusiime. All rights reserved.</p>
+    </footer>
+
+    <!-- Your JS Logic -->
     <script src="script.js"></script>
 </body>
 </html>
