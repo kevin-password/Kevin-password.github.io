@@ -1,40 +1,24 @@
-// modules/dashboard.js
 import { db } from '../db.js';
-
 export const title = 'Dashboard';
-
 export async function render(container) {
-    const habits = await db.getAll('habits');
-    const finance = await db.getAll('finance');
-    
-    // Calculate basic metrics
-    const totalHabits = habits.length;
-    const completedToday = habits.filter(h => h.date === new Date().toISOString().split('T')[0] && h.completed).length;
-    const disciplineScore = totalHabits > 0 ? Math.round((completedToday / totalHabits) * 100) : 0;
-
     container.innerHTML = `
         <div class="space-y-6">
-            <!-- Top Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                ${renderStatCard('Discipline Score', `${disciplineScore}%`, 'trending-up', 'brand')}
-                ${renderStatCard('Habits Done', `${completedToday}/${totalHabits}`, 'check-circle', 'green')}
-                ${renderStatCard('Net Worth', `$${calculateNetWorth(finance)}`, 'wallet', 'purple')}
-                ${renderStatCard('Focus Time', '4h 20m', 'clock', 'orange')}
-            </div>
-
-            <!-- Charts Row -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
-                    <h3 class="text-lg font-semibold mb-4">Weekly Discipline Trend</h3>
-                    <canvas id="disciplineChart" height="200"></canvas>
+                    <p class="text-sm text-slate-500">Status</p>
+                    <p class="text-2xl font-bold text-green-500">Online</p>
                 </div>
                 <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
-                    <h3 class="text-lg font-semibold mb-4">Cash Flow</h3>
-                    <canvas id="financeChart" height="200"></canvas>
+                    <p class="text-sm text-slate-500">Current Focus</p>
+                    <p class="text-2xl font-bold">MBChB Studies</p>
                 </div>
             </div>
-
-            <!-- AI Recommendations -->
+            <div class="bg-gradient-to-r from-brand-500/10 to-purple-500/10 p-6 rounded-xl border border-brand-500/20">
+                <h3 class="text-lg font-semibold mb-2">Welcome to LifeOS, Kevin!</h3>
+                <p class="text-slate-600 dark:text-slate-300">Your academic data and skills have been automatically loaded from your CV. Navigate to "My Profile" or "Academic" to see them.</p>
+            </div>
+        </div>`;
+}            <!-- AI Recommendations -->
             <div class="bg-gradient-to-r from-brand-500/10 to-purple-500/10 p-6 rounded-xl border border-brand-500/20">
                 <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
                     <i data-lucide="sparkles" class="w-5 h-5 text-brand-500"></i> AI Coach Recommendations
