@@ -1,90 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin Tumusiime | Portfolio</title>
+    <title>LifeOS Ultimate</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0f172a',
-                        secondary: '#1e293b',
-                        accent: '#818cf8',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        brand: { 50: '#f0f9ff', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' }
                     }
                 }
             }
         }
     </script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .dark .glass { background: rgba(15, 23, 42, 0.6); }
+    </style>
 </head>
-<body class="bg-primary text-slate-50 font-sans leading-relaxed scroll-smooth">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 w-full z-50 bg-primary/80 backdrop-blur-md border-b border-white/10 py-4">
-        <ul class="flex justify-center gap-8 list-none flex-wrap px-5">
-            <li><a href="#about" class="text-slate-400 font-medium hover:text-white transition">About</a></li>
-            <li><a href="#education" class="text-slate-400 font-medium hover:text-white transition">Education</a></li>
-            <li><a href="#experience" class="text-slate-400 font-medium hover:text-white transition">Experience</a></li>
-            <li><a href="#skills" class="text-slate-400 font-medium hover:text-white transition">Skills</a></li>
-        </ul>
-    </nav>
+    <!-- App Layout -->
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col">
+            <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-brand-500 to-purple-500 bg-clip-text text-transparent">LifeOS</h1>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Ultimate Personal OS</p>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+                <a href="#dashboard" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </a>
+                <a href="#habits" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i> Habits
+                </a>
+                <a href="#health" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="heart-pulse" class="w-5 h-5"></i> Health
+                </a>
+                <a href="#finance" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="wallet" class="w-5 h-5"></i> Finance
+                </a>
+                <a href="#academic" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i> Academic
+                </a>
+                <!-- Add other module links here following the same pattern -->
+            </nav>
 
-    <!-- HERO SECTION -->
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-5 bg-[radial-gradient(circle_at_50%_50%,rgba(129,140,248,0.15)_0%,transparent_50%)]">
-        <h1 id="hero-name" class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white to-indigo-400 bg-clip-text text-transparent mb-2">Loading...</h1>
-        <p id="hero-title" class="text-xl text-slate-400 mb-2">Loading...</p>
-        <p id="hero-location" class="text-accent mb-8">Loading...</p>
-        <div class="flex gap-4 flex-wrap justify-center">
-            <a href="#" id="email-link" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">✉️ Email</a>
-            <a href="#" id="phone-link" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">📞 Phone</a>
-            <a href="https://linkedin.com" target="_blank" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">💼 LinkedIn</a>
-            <a href="https://github.com" target="_blank" class="px-5 py-2 border border-white/10 rounded-full text-slate-50 hover:bg-accent hover:border-accent hover:text-white transition">💻 GitHub</a>
-        </div>
-    </header>
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+                <button id="theme-toggle" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="moon" class="w-5 h-5 theme-icon-dark"></i>
+                    <i data-lucide="sun" class="w-5 h-5 theme-icon-light hidden"></i>
+                    <span>Toggle Theme</span>
+                </button>
+            </div>
+        </aside>
 
-    <main>
-        <!-- ABOUT -->
-        <section id="about" class="max-w-4xl mx-auto py-20 px-5">
-            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Professional Profile</h2>
-            <p id="about-text" class="text-lg text-slate-400 leading-relaxed">Loading...</p>
-        </section>
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col overflow-hidden md:ml-64">
+            <!-- Top Bar -->
+            <header class="h-16 flex items-center justify-between px-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-40">
+                <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h2 id="page-title" class="text-xl font-semibold">Dashboard</h2>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 relative">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">K</div>
+                </div>
+            </header>
 
-        <!-- EDUCATION -->
-        <section id="education" class="max-w-4xl mx-auto py-20 px-5">
-            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Education</h2>
-            <div id="education-container" class="relative pl-8 border-l-2 border-white/10"></div>
-        </section>
+            <!-- Scrollable Content Area -->
+            <div id="app-content" class="flex-1 overflow-y-auto p-6">
+                <!-- Modules will be injected here by the Router -->
+                <div class="flex items-center justify-center h-full">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500"></div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-        <!-- EXPERIENCE -->
-        <section id="experience" class="max-w-4xl mx-auto py-20 px-5">
-            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Experience & Leadership</h2>
-            <div id="experience-container" class="relative pl-8 border-l-2 border-white/10"></div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" class="max-w-4xl mx-auto py-20 px-5">
-            <h2 class="text-3xl font-bold mb-10 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Technical Skills</h2>
-            <div id="skills-container" class="flex flex-wrap gap-3"></div>
-        </section>
-    </main>
-
-    <footer class="text-center py-10 text-slate-500 text-sm border-t border-white/10 mt-10">
-        <p>&copy; 2025 Kevin Tumusiime. All rights reserved.</p>
-    </footer>
-
-    <!-- Your JS Logic -->
-    <script src="script.js"></script>
+    <!-- App Scripts (ES Modules) -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>
